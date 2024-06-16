@@ -1,7 +1,9 @@
+import Todo from "./components/Todo";
+
 const App =()=> {
   return (
-    <div>
-      <h2 className="bg-slate-600">ToDo App</h2>
+    <div className="bg-stone-900 grid py-4 min-h-screen">
+     <Todo/>
     </div>
   )
 }

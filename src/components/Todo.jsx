@@ -1,10 +1,10 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import todo_icon from '../assets/todo_icon.png'
 import TodoItems from './TodoItems'
 function Todo() {
 
   const inputeRef= useRef();
-  const [toDo, setToDo]=useState([])
+  const [toDoList, setToDoList]=useState([])
   const add =()=> {
     const inputText =inputeRef.current.value.trim();
     if(inputText==="") {
@@ -16,13 +16,33 @@ function Todo() {
       isComplete:false
     }
 
-    setToDo((prev)=>[...prev,newToDo]);
+    setToDoList((prev)=>[...prev,newToDo]);
     inputeRef.current.value="";
   }
   const deleteToDo=(id)=> {
-   let newItem= toDo.filter((todoItem)=>todoItem.id !=id);
-    setToDo(newItem);
+   let newItem= toDoList.filter((todoItem)=>todoItem.id !=id);
+   setToDoList(newItem);
   }
+  const toggole =(id)=> {
+   setToDoList(toDoList.map(todo =>
+    todo.id === id ? { ...todo, isComplete: !todo.isComplete } : todo
+  ));
+
+  // setToDoList((prevToDo)=> {
+  //   return prevToDo.map((todo)=> {
+  //     if(todo.id===id){
+  //       return {...todo,isComplete:!todo.isComplete}
+  //     }
+  //     return todo
+  //   })
+  // })
+
+
+
+  }
+  useEffect(()=>{
+    console.log(toDoList)
+  },[toDoList])
   return (
     <div className='bg-white place-self-center w-4/12 flex flex-col p-7 min-h-[550px] rounded-xl'>
         {/* title */}
@@ -41,8 +61,8 @@ function Todo() {
 
         <div>
           {
-            toDo.map((item,index)=> {
-              return <TodoItems key={index} text={item.text} id={item.id} isComplete={item.isComplete} deleteToDo={deleteToDo}/>
+            toDoList.map((item,index)=> {
+              return <TodoItems key={index} text={item.text} id={item.id} isComplete={item.isComplete} deleteToDo={deleteToDo} toggole={toggole}/>
             })
           }
         </div>

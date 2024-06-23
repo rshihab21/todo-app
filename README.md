@@ -2,7 +2,8 @@
 
 For practice, I created a to-do list application where you may record your daily tasks.
 
-Currently, two official plugins are available:
+What this application allows you to do
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-You Can List Your Task
+-You Can Record your complete Task
+-You Can Delete Your Task

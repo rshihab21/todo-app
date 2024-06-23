@@ -18,8 +18,10 @@ function Todo() {
 
     setToDo((prev)=>[...prev,newToDo]);
     inputeRef.current.value="";
-
-
+  }
+  const deleteToDo=(id)=> {
+   let newItem= toDo.filter((todoItem)=>todoItem.id !=id);
+    setToDo(newItem);
   }
   return (
     <div className='bg-white place-self-center w-4/12 flex flex-col p-7 min-h-[550px] rounded-xl'>
@@ -40,7 +42,7 @@ function Todo() {
         <div>
           {
             toDo.map((item,index)=> {
-              return <TodoItems key={index} text={item.text}/>
+              return <TodoItems key={index} text={item.text} id={item.id} isComplete={item.isComplete} deleteToDo={deleteToDo}/>
             })
           }
         </div>
